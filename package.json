@@ -1,0 +1,18 @@
+{
+  "name": "lightsuit",
+  "version": "0.0.1",
+  "description": "command and control for lightsuit project",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "controller": "SERVER_URL=localhost:8080 node src/controller.js",
+    "server": "node src/server.js"
+  },
+  "author": "John Riney III",
+  "license": "MIT",
+  "dependencies": {
+    "@julusian/jpeg-turbo": "^0.5.2",
+    "easybotics-rpi-rgb-led-matrix": "^0.3.0",
+    "elgato-stream-deck": "^3.0.0"
+  }
+}
