@@ -5,10 +5,10 @@ const request = require('request');
 const DECK_WIDTH = 5;
 const DECK_HEIGHT = 3;
 const DECK_REZ = 72;
-const SERVER_URL = process.env.SERVER_URL;
+const ROUTER_URL = process.env.ROUTER_URL;
 
-if (!SERVER_URL) {
-  console.log('ERROR: No server url specified. Set SERVER_URL in the environment.');
+if (!ROUTER_URL) {
+  console.log('ERROR: No router url specified. Set ROUTER_URL in the environment.');
   process.exit(1);
 }
 
@@ -24,15 +24,18 @@ for(const k of Array(DECK_WIDTH * DECK_HEIGHT).keys()) {
   deck.fillColor(k, 0, !(k % 2) ? 255 : 0, (k % 2) ? 255 : 0)
 }
 
-deck.on('down', keyIndex => {
-  request(`http://${SERVER_URL}/${keyIndex}/down`, (err, res, body) => {
+const handleKeyEvent = (keyIndex, direction) => {
+  request(`http://${ROUTER_URL}/${keyIndex}/${direction}`, (err, res, body) => {
     if (err) {
       console.log(`Error making request: ${err}`)
     } else {
-      console.log(`From server: ${body}`);
+      console.log(`From router: ${body}`);
     }
   });
-});
+};
+
+deck.on('down', keyIndex => { handleKeyEvent(keyIndex, 'down') });
+deck.on('up', keyIndex => { handleKeyEvent(keyIndex, 'up') });
 
 console.log(`Lightsuit controller started.`);
-console.log(`Server URL is ${SERVER_URL}`);
+console.log(`Router URL is ${ROUTER_URL}`);

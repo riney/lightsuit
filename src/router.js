@@ -3,7 +3,7 @@ const url = require('url');
 
 const PORT = 8080;
 
-const server = http.createServer( (req, res) => {
+const router = http.createServer( (req, res) => {
   const uri = url.parse(req.url);
   console.log(`Got request for ${uri.pathname}`);
   res.statusCode = 200;
@@ -11,6 +11,6 @@ const server = http.createServer( (req, res) => {
   res.end();
 });
 
-server.listen(PORT);
+router.listen(PORT);
 
-console.log(`Lightsuit server started on port ${PORT}`);
+console.log(`Lightsuit router started on port ${PORT}`);

@@ -5,14 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "controller": "SERVER_URL=localhost:8080 node src/controller.js",
-    "server": "node src/server.js"
+    "controller": "ROUTER_URL=localhost:8080 node src/controller.js",
+    "router": "node src/router.js"
   },
   "author": "John Riney III",
   "license": "MIT",
   "dependencies": {
     "@julusian/jpeg-turbo": "^0.5.2",
     "easybotics-rpi-rgb-led-matrix": "^0.3.0",
-    "elgato-stream-deck": "^3.0.0"
+    "elgato-stream-deck": "^3.0.0",
+    "koa": "^2.7.0",
+    "koa-router": "^7.4.0"
   }
 }
