@@ -6,7 +6,8 @@
   "scripts": {
     "test": "test",
     "controller": "ROUTER_URL=localhost:8080 node src/controller.js",
-    "router": "node src/router.js"
+    "router": "node src/router.js",
+    "display": "node src/display.js"
   },
   "author": "John Riney III",
   "license": "MIT",
