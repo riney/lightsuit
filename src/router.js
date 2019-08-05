@@ -1,13 +1,33 @@
-var Koa = require('koa');
-var Router = require('koa-router');
+const Koa = require('koa');
+const Router = require('koa-router');
+
+const config = require('../conf/routerConfig.json');
 
 const PORT = 8080;
 
-var app = new Koa();
-var router = new Router();
+const app = new Koa();
+const router = new Router();
 
 router.get('/button/:id/:action', (ctx, next) => {
-  ctx.body = `Got button ${ctx.params.id} action: ${ctx.params.action}` 
+  var color;
+  if (id == 0) {
+    color = '00ff00';
+  } else if (id == 1) {
+    color = '0000ff';
+  } else {
+    color = 'ff0000';
+  }
+
+  const displayUrl = config['displays']['test'];
+  request(`http://${displayUrl}/fill/${color}`, (err, res, body) => {
+    if (err) {
+      console.log(`Error making request: ${err}`)
+    } else {
+      console.log(`From display: ${body}`);
+    }
+  });
+
+  ctx.body = `Got button ${ctx.params.id} action: ${ctx.params.action}`
 });
 
 app.use(router.routes());
