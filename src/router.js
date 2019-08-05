@@ -1,16 +1,18 @@
-const http = require('http');
-const url = require('url');
+var Koa = require('koa');
+var Router = require('koa-router');
 
 const PORT = 8080;
 
-const router = http.createServer( (req, res) => {
-  const uri = url.parse(req.url);
-  console.log(`Got request for ${uri.pathname}`);
-  res.statusCode = 200;
-  res.write(`${uri.pathname} OK`);
-  res.end();
+var app = new Koa();
+var router = new Router();
+
+router.get('/button/:id/:action', (ctx, next) => {
+  ctx.body = `Got button ${ctx.params.id} action: ${ctx.params.action}` 
 });
 
-router.listen(PORT);
+app.use(router.routes());
+app.use(router.allowedMethods());
+
+app.listen(PORT);
 
 console.log(`Lightsuit router started on port ${PORT}`);

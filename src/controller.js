@@ -25,7 +25,7 @@ for(const k of Array(DECK_WIDTH * DECK_HEIGHT).keys()) {
 }
 
 const handleKeyEvent = (keyIndex, direction) => {
-  request(`http://${ROUTER_URL}/${keyIndex}/${direction}`, (err, res, body) => {
+  request(`http://${ROUTER_URL}/button/${keyIndex}/${direction}`, (err, res, body) => {
     if (err) {
       console.log(`Error making request: ${err}`)
     } else {
