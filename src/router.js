@@ -21,7 +21,7 @@ router.get('/button/:id/:action', (ctx, next) => {
   }
 
   const displayUrl = config['displays']['test'];
-  request(`http://${displayUrl}/fill/${color}`, (err, res, body) => {
+  request(`${displayUrl}/fill/${color}`, (err, res, body) => {
     if (err) {
       console.log(`Error making request: ${err}`)
     } else {
