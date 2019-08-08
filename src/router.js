@@ -10,6 +10,7 @@ const router = new Router();
 
 router.get('/button/:id/:action', (ctx, next) => {
   var color;
+  const id = ctx.params.id;
   if (id == 0) {
     color = '00ff00';
   } else if (id == 1) {
