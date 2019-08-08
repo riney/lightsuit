@@ -13,7 +13,9 @@ matrix.clear();
 router.get('/fill/:hexColor', (ctx, next) => {
   console.log(`Received fill command, hexColor: ${ctx.params.hexColor}`);
   const {red, green, blue} = hexRGB(ctx.params.hexColor);
+  console.log(`Filling with ${red} ${green} ${blue}`)
   matrix.fill(red, green, blue);
+  console.log('Updating');
   matrix.update();
   console.log('Updated display');
 });
