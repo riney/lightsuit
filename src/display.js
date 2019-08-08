@@ -15,6 +15,7 @@ router.get('/fill/:hexColor', (ctx, next) => {
   const {red, green, blue} = hexRGB(ctx.params.hexColor);
   matrix.fill(red, green, blue);
   matrix.update();
+  console.log('Updated display');
 });
 
 app.use(router.routes());
