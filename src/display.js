@@ -24,13 +24,15 @@ const router = new Router();
 //   console.log('Updated display');
 // });
 
+const { promisify } = require('util')
+const sleep = promisify(setTimeout)
+
 router.get('/image/:name', async (ctx, next) => {
   console.log(`Received image command, name: ${ctx.params.name}`);
   console.log(`Executing image command`)
   exec(KILL_COMMAND, (err, stdout, stderr) => {
     if (err) {
       console.log(`error killing viewer: ${err.message}`);
-      return;
     }
   });
 
