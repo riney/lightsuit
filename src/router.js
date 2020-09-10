@@ -26,20 +26,12 @@ router.get('/button/:id/:action', (ctx, next) => {
     putImagesOnBodyPart('IM_Head.png', 'head');
     putImagesOnBodyPart('IM_Chest.png', 'chest');
   } else if (id == 1) {
-    putImagesOnBodyPart('IM_Head.png', 'head');
-    putImagesOnBodyPart('IM_Chest.png', 'chest');
-  } else {
-    color = 'ff0000';
+    putImagesOnBodyPart('Cap_Head.png', 'head');
+    putImagesOnBodyPart('Cap_Chest.png', 'chest');
+  } else if (id == 2) {
+    putImagesOnBodyPart('SM_Head.png', 'head');
+    putImagesOnBodyPart('SM_Chest.png', 'chest');
   }
-
-  const displayUrl = config['displays']['test'];
-  request(`${displayUrl}/fill/${color}`, (err, res, body) => {
-    if (err) {
-      console.log(`Error making request: ${err}`)
-    } else {
-      console.log(`From display: ${body}`);
-    }
-  });
 
   ctx.body = `Got button ${ctx.params.id} action: ${ctx.params.action}`
 });
