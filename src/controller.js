@@ -35,7 +35,7 @@ const handleKeyEvent = (keyIndex, direction) => {
 };
 
 deck.on('down', keyIndex => { handleKeyEvent(keyIndex, 'down') });
-deck.on('up', keyIndex => { handleKeyEvent(keyIndex, 'up') });
+//deck.on('up', keyIndex => { handleKeyEvent(keyIndex, 'up') });
 
 console.log(`Lightsuit controller started.`);
 console.log(`Router URL is ${ROUTER_URL}`);
