@@ -36,7 +36,7 @@ router.get('/image/:name', async (ctx, next) => {
     }
   });
 
-  await sleep(100);
+  await sleep(1000);
 
   exec(IMAGE_COMMAND + ' ' + ctx.params.name + ' &', (err, stdout, stderr) => {
     if (err) {
