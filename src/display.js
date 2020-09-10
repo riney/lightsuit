@@ -1,4 +1,4 @@
-const exec = require("child_process");
+const { exec } = require("child_process");
 const hexRGB = require('hex-rgb');
 const Koa = require('koa');
 //const LedMatrix = require("easybotics-rpi-rgb-led-matrix");
