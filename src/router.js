@@ -10,7 +10,7 @@ const app = new Koa();
 const router = new Router();
 
 const putImagesOnBodyPart = (image, bodyPart) => {
-  request(`http://${config['displays'][bodyPart]}/image/${image}`, (err, res, body) => {
+  request(`${config['displays'][bodyPart]}/image/${image}`, (err, res, body) => {
     if (err) {
       console.log(`Error making request: ${err}`)
     } else {
