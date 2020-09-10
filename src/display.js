@@ -28,13 +28,13 @@ router.get('/image/:name', (ctx, next) => {
   console.log(`Received image command, name: ${ctx.params.name}`);
   console.log(`Executing image command`)
   exec(KILL_COMMAND, (err, stdout, stderr) => {
-    console.log(`error killing viewer: ${error.message}`);
+    console.log(`error killing viewer: ${err.message}`);
     return;
   });
-  
+
   exec(IMAGE_COMMAND + ' ' + ctx.params.name + ' &', (err, stdout, stderr) => {
     if (error) {
-      console.log(`error running viewer: ${error.message}`);
+      console.log(`error running viewer: ${err.message}`);
       return;
     }
     if (stderr) {
