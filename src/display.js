@@ -5,7 +5,9 @@ const Koa = require('koa');
 const Router = require('koa-router');
 
 const PORT = 8080;
-const IMAGE_COMMAND = '/home/pi/lightsuit/scripts/draw_image.sh '
+const IMAGE_COMMAND = '/home/pi/lightsuit/scripts/draw_image.sh'
+// I am a terrible person
+const KILL_COMMAND = 'pkill -f led-image-viewer'
 
 const app = new Koa();
 const router = new Router();
@@ -25,9 +27,14 @@ const router = new Router();
 router.get('/image/:name', (ctx, next) => {
   console.log(`Received image command, name: ${ctx.params.name}`);
   console.log(`Executing image command`)
-  exec(IMAGE_COMMAND + ctx.params.name, (err, stdout, stderr) => {
+  exec(KILL_COMMAND, (err, stdout, stderr) => {
+    console.log(`error killing viewer: ${error.message}`);
+    return;
+  });
+  
+  exec(IMAGE_COMMAND + ' ' + ctx.params.name + ' &', (err, stdout, stderr) => {
     if (error) {
-      console.log(`error: ${error.message}`);
+      console.log(`error running viewer: ${error.message}`);
       return;
     }
     if (stderr) {
