@@ -1,5 +1,7 @@
 {
   "displays": {
-    "test": "http://glow2:8080"
+    "head":   "http://glow2:8080",
+    "chest":  "http://glow3:8080",
+    "l_arm":  "http://glow4:8080"
   }
 }
