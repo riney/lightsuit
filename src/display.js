@@ -24,16 +24,20 @@ const router = new Router();
 //   console.log('Updated display');
 // });
 
-router.get('/image/:name', (ctx, next) => {
+router.get('/image/:name', async (ctx, next) => {
   console.log(`Received image command, name: ${ctx.params.name}`);
   console.log(`Executing image command`)
   exec(KILL_COMMAND, (err, stdout, stderr) => {
-    console.log(`error killing viewer: ${err.message}`);
-    return;
+    if (err) {
+      console.log(`error killing viewer: ${err.message}`);
+      return;
+    }
   });
 
+  await sleep(100);
+
   exec(IMAGE_COMMAND + ' ' + ctx.params.name + ' &', (err, stdout, stderr) => {
-    if (error) {
+    if (err) {
       console.log(`error running viewer: ${err.message}`);
       return;
     }
